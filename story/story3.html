@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html style="font-size: 16px" lang="ar" dir="rtl">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="keywords" content="MHyazji, design, ai" />
+    <title>بطاقات العيد | المصمم محمد اليازجي | S3</title>
+    <link rel="icon" href="../assets/images/thumbnail.webp" />
+    <link rel="stylesheet" href="../assets/css/nicepage.css" media="screen" />
+    <link rel="stylesheet" href="../assets/css/Page-2.css" media="screen" />
+    <script
+      type="text/javascript"
+      src="../assets/javascript/jquery.js"
+    ></script>
+    <meta name="theme-color" content="#478ac9" />
+    <meta
+      name="title"
+      property="og:title"
+      content="بطاقات العيد | المصمم محمد اليازجي | S3"
+    />
+    <meta name="type" property="og:type" content="website" />
+    <meta
+      name="description"
+      property="og:description"
+      content="بطاقات العيد | المصمم محمد اليازجي | S3"
+    />
+    <meta
+      name="url"
+      property="og:url"
+      content="https://mhyazji-eidcards.sadeem4bs.com/"
+    />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://pbs.twimg.com/profile_images/1632988778783440897/UGhnzzfy_400x400.jpg"
+    />
+    <meta name="author" content="@mhyazji" />
+
+    <script
+      type="text/javascript"
+      src="../assets/javascript/googleTagManagerHead.js"
+    ></script>
+  </head>
+  <body class="u-body u-xl-mode" data-lang="ar">
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PJGPJXT"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <header class="custom_header">
+      <div>
+        <a
+          href="https://twitter.com/mhyazji"
+          class="u-image u-logo u-image-1"
+          target="_blank"
+        >
+          <img
+            src="../assets/images/mhyazji.webp"
+            class="u-logo-image u-logo-image-1"
+            width="60"
+          />
+        </a>
+      </div>
+      <div>
+        <a href="javascript: history.go(-1)">الرئيسية</a>
+      </div>
+      <div>
+        <p>المصمم محمد اليازجي</p>
+      </div>
+    </header>
+
+    <section class="u-align-left u-clearfix u-section-1">
+      <a href="https:\/\/twitter.com/mhyazji" target="blank">
+        <img class="my_image" />
+      </a>
+    </section>
+
+    <section
+      class="u-clearfix u-container-align-center u-section-2"
+      id="carousel_abb9"
+    >
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div
+          class="u-expanded-width u-list u-list-1 mainContainer"
+          style="align-items: center"
+        >
+          <img src="../assets/images/3-story.jpg" width="50%" id="myimage" />
+          <div
+            id="theText"
+            style="border-width: 1px; border-color: black"
+          ></div>
+        </div>
+        <div style="text-align: center">
+          <input
+            onkeyup="writeText(this)"
+            id="textArea"
+            type="text"
+            class="my_input"
+            placeholder="ادخل اسمك هنا"
+          />
+        </div>
+        <div style="text-align: center">
+          <input
+            type="button"
+            onclick="saveImageWithText();"
+            id="bts3"
+            value="أنشئ بطاقتي"
+            class="button-36"
+            role="button"
+          />
+        </div>
+
+        <p class="u-text u-text-default u-text-1">
+          تصميم
+          <a
+            href="https://twitter.com/mhyazji"
+            class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-4-base u-btn-1"
+            >محمد اليازجي
+          </a>
+        </p>
+      </div>
+    </section>
+    <footer class="u-clearfix u-grey-80" style="margin-top: 50px">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <a
+          class="u-small-text u-text u-text-variant u-text-1"
+          href="https://sadeem4bs.com"
+          target="_blank"
+        >
+          Development By : Sadeem ©
+        </a>
+      </div>
+    </footer>
+    <script>
+      let textContainer;
+      let t = '';
+
+      let writeText = (ele) => {
+        t = ele.value;
+        document.getElementById('theText').innerHTML = t.replace(
+          /\n\r?/g,
+          '<br/>'
+        );
+      };
+
+      let saveImageWithText = () => {
+        textContainer = document.getElementById('theText'); // The element with the text.
+        // Create an image object.
+        let img = new Image();
+        img.src = document.getElementById('myimage').src;
+
+        // Create a canvas object.
+        let canvas = document.createElement('canvas');
+
+        // Wait till the image is loaded.
+        img.onload = function () {
+          drawImage();
+          downloadImage(img.src.replace(/^.*[\\\/]/, '')); // Download the processed image.
+        };
+
+        // Draw the image on the canvas.
+        let drawImage = () => {
+          // Get text alignement, colour and font of the text.
+          let txtAlign = window.getComputedStyle(textContainer).textAlign;
+          let color = window.getComputedStyle(textContainer).color;
+          let fnt = window.getComputedStyle(textContainer).font;
+
+          let ctx = canvas.getContext('2d'); // Create canvas context.
+
+          // Assign width and height.
+          canvas.width = img.width;
+          canvas.height = img.height;
+
+          // Draw the image.
+          ctx.drawImage(img, 0, 0);
+
+          // Get the padding etc.
+          let left = parseInt(window.getComputedStyle(textContainer).left);
+          let right = textContainer.getBoundingClientRect().right;
+          let top = parseInt(window.getComputedStyle(textContainer).top, 0);
+
+          let center = textContainer.getBoundingClientRect().width / 2;
+
+          let paddingTop = window
+            .getComputedStyle(textContainer)
+            .paddingTop.replace('px', '');
+          let paddingLeft = window
+            .getComputedStyle(textContainer)
+            .paddingLeft.replace('px', '');
+          let paddingRight = window
+            .getComputedStyle(textContainer)
+            .paddingRight.replace('px', '');
+
+          // Assign text properties to the context.
+          ctx.font = '42px Swissra';
+          ctx.fillStyle = 'white';
+          ctx.textAlign = txtAlign;
+
+          let td = ctx.measureText(textContainer.innerHTML),
+            tw = td.width,
+            th = td.actualBoundingBoxAscent + td.actualBoundingBoxDescent;
+          // Now, we need the coordinates of the text.
+          let x; // coordinate.
+          if (txtAlign === 'right') {
+            x = right + parseInt(paddingRight);
+          }
+          if (txtAlign === 'left') {
+            x = left + parseInt(paddingLeft);
+          }
+          if (txtAlign === 'center') {
+            x = center + left;
+          }
+          // console.log(img.naturalWidth / 2, tw / 2);
+          let xx = Math.floor(img.naturalWidth / 2, tw / 2),
+            yy = Math.floor(img.naturalHeight - th - 475);
+          let str = t.replace(/\n\r?/g, '<br />').split('<br />');
+
+          for (let i = 0; i <= str.length - 1; i++) {
+            ctx.fillText(
+              str[i].replace('</div>', '').replace('<br>', '').replace(';', ''),
+              xx,
+              yy
+            );
+          }
+          // document.body.append(canvas); // Show the image with the text on the Canvas.
+        };
+
+        // Download the processed image.
+        let downloadImage = (img_name) => {
+          let a = document.createElement('a');
+          a.href = canvas.toDataURL('image/png');
+          a.download = img_name;
+          document.body.appendChild(a);
+          a.click();
+        };
+      };
+    </script>
+  </body>
+</html>
